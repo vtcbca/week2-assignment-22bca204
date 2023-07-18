@@ -1,0 +1,36 @@
+create table stud1(eid int primary key,anme text);
+sqlite> insert into values(1,'om');
+Error: near "values": syntax error
+sqlite> insert into stud1 values(1,'om');
+sqlite> insert into stud1 values(2,'sai');
+sqlite> insert into stud1 values(3,'ram');
+sqlite> insert into stud1 values(4,'jay');
+sqlite> insert into stud1 values(5,'shree');
+sqlite> insert into stud1 values(6,'ram');
+sqlite> insert into stud1 values(7,'radha');
+sqlite> insert into stud1 values(8,'krishna');
+sqlite> insert into stud1 values(9,'jay');
+sqlite> insert into stud1 values(10,'mahakal');
+
+ create table stud_details(eid int primarykey,city text,moblie number,foreign key(eid) references stud1(eid));
+insert into stud_details values(1,'bardoli',9996587412);
+sqlite> insert into stud_details values(2,'ahmedabad',7894568549);
+sqlite> insert into stud_details values(3,'rajkot',8866459751);
+sqlite> insert into stud_details values(4,'bharuch',6352147895);
+sqlite> insert into stud_details values(5,'vadodara',7785964123);
+sqlite> insert into stud_details values(6,'surat',6542358415);
+sqlite> insert into stud_details values(7,'baroda',8521479635);
+sqlite> insert into stud_details values(7,'vesu',963258749);
+sqlite> insert into stud_details values(8,'vesu',9456871259);
+sqlite> insert into stud_details values(9,'daman',8423159647);
+sqlite> insert into stud_details values(10,'mumbai',6963215487);
+
+select stud1.eid,anme ,city, moblie number from stud_details inner join stud1 on stud1.eid=stud_details.eid and city ='surat';
+6|ram|surat|6542358415
+
+select stud1.eid,anme ,city, moblie number from stud_details inner join stud1 on stud1.eid=stud_details.eid and city like 'b%';
+1|om|bardoli|9996587412
+4|jay|bharuch|6352147895
+7|radha|baroda|8521479635
+
+update stud_details set moblie number=999887452 where city='surat';
